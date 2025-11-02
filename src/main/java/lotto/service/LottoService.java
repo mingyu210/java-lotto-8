@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class LottoService {
     private final List<Lotto> lottos = new ArrayList<>();
-    private List<Integer> winningNubmbers;
+    private List<Integer> winningNumbers;
     private int bonusNumber;
 
     public void buyLottos(int amount) {
@@ -27,7 +27,7 @@ public class LottoService {
     }
 
     public void setWinningNumbers(String input, int bonus) {
-        winningNubmbers = Arrays.stream(input.split(",")).map(String::trim).map(Integer::parseInt).collect(Collectors.toList());
+        winningNumbers = Arrays.stream(input.split(",")).map(String::trim).map(Integer::parseInt).collect(Collectors.toList());
         bonusNumber = bonus;
     }
 
@@ -36,7 +36,7 @@ public class LottoService {
 
         for (Lotto lotto : lottos) {
             int matchCount = (int) lotto.getNumbers().stream()
-                    .filter(winningNubmbers::contains)
+                    .filter(winningNumbers::contains)
                     .count();
 
             boolean bonusMatch = lotto.getNumbers().contains(bonusNumber);
