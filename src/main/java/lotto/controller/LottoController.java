@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.service.LottoService;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoController {
 
@@ -11,9 +12,12 @@ public class LottoController {
         int purchaseAmount = InputView.inputPurchaseAmount();
         lottoService.buyLottos(purchaseAmount);
 
+        OutputView.printLottos(lottoService.getLottos());
+
         String WinningNumbers = InputView.inputWinningNumbers();
         int bonusNumber = InputView.inputBonusNumber();
 
         lottoService.setWinningNumbers(WinningNumbers, bonusNumber);
+        OutputView.printStatistics(lottoService.calculateResults(purchaseAmount));
     }
 }
