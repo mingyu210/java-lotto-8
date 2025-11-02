@@ -13,6 +13,7 @@ public class LottoService {
     private int bonusNumber;
 
     public void buyLottos(int amount){
+        validateAmount(amount);
         int count = amount/1000;
 
         for(int i = 0; i < count; i++){
@@ -53,6 +54,12 @@ public class LottoService {
                 .sum();
         double rate = (totalPrize / amount) * 100;
         System.out.printf("총 수익률은 %.1f%%입니다.%n", rate);
+    }
+
+    private void validateAmount(int amount) {
+        if (amount % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위여야 합니다.");
+        }
     }
 
 }
