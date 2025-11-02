@@ -8,7 +8,7 @@ public class LottoController {
 
     private final LottoService lottoService = new LottoService();
 
-    public void run(){
+    public void run() {
         int purchaseAmount = InputView.inputPurchaseAmount();
         lottoService.buyLottos(purchaseAmount);
 

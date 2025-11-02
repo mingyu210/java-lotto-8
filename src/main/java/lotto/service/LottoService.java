@@ -12,12 +12,12 @@ public class LottoService {
     private List<Integer> winningNubmbers;
     private int bonusNumber;
 
-    public void buyLottos(int amount){
+    public void buyLottos(int amount) {
         validateAmount(amount);
-        int count = amount/1000;
+        int count = amount / 1000;
 
-        for(int i = 0; i < count; i++){
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+        for (int i = 0; i < count; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lottos.add(new Lotto(numbers));
         }
     }
@@ -26,7 +26,7 @@ public class LottoService {
         return lottos;
     }
 
-    public void setWinningNumbers(String input, int bonus){
+    public void setWinningNumbers(String input, int bonus) {
         winningNubmbers = Arrays.stream(input.split(",")).map(String::trim).map(Integer::parseInt).collect(Collectors.toList());
         bonusNumber = bonus;
     }
