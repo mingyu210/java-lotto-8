@@ -14,10 +14,10 @@ public class LottoController {
 
         OutputView.printLottos(lottoService.getLottos());
 
-        String WinningNumbers = InputView.inputWinningNumbers();
+        String winningNumbers = InputView.inputWinningNumbers();
         int bonusNumber = InputView.inputBonusNumber();
 
-        lottoService.setWinningNumbers(WinningNumbers, bonusNumber);
+        lottoService.setWinningNumbers(winningNumbers, bonusNumber);
         OutputView.printStatistics(lottoService.calculateResults(purchaseAmount));
     }
 }
